@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="app">  
+
+<head>
+    <title>Small Interactive Pizza Menu.</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+
+<body ng-controller="pizzaController">
+    <div class="container">
+        <h1>Ishu Pizza</h1>
+
+        <!--to display the title variable that you just defined inside your controller rather than static text, replace the contents in h2 -->
+        <h2> {{model.title}}</h2>
+        <!-- It is best practice to always bind to an object off of the scope, in this case, "model".
+             This provides a clean separation and avoids binding issues in a more complex application-->
+        <!-- Putting a $scope variable's name inside an Angular expression {{ }} binds it to the view, and sets up a watcher to keep up on the value. -->
+        <!-- (e.g. {{::model.title}}) to perform a one-time binding. -
+        if you know a variable isn't going to change in the view, and you just want to bind its initial value, 
+        This tells Angular to go ahead and set the value the first time, but not to set a watcher to keep up on it. This can be a useful performance boost for larger applications. -->  
+        
+        <h3>Topping Search</h3>
+        <input type="text" class="form-control" ng-model="model.search">
+        
+        <!--  <div ng-hide="model.search === false "> shorthand form -->
+        <!--  <div ng-hide="model.search"> -->
+        <div ng-hide="model.search">
+                Enter the search criteria above.
+        </div>
+            
+        <div ng-show="model.search" ng-repeat="t in model.availableToppings | filter:model.search">
+            <span ng-click="addTopping(t)">{{t}}</span>
+            <!-- Search Results -->
+        </div>
+
+        <h3>Selected Toppings</h3>
+        <div ng-repeat="t in model.toppings">
+            {{t}}
+        </div>
+        
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="./app/app.js"></script>
+    <script src="./app/pizzaController.js" ></script>
+
+</body>
+        
+</html>

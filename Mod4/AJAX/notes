@@ -1,0 +1,52 @@
+AJAX--> $http and $resource,which Angular uses to generate AJAX calls 
+       and handle their results.
+Data - {string|Object} -- The response body transformed with the transform function
+Status - {number} -- HTTP status code of the response
+Headers - {function([headerName])} -- Header getter function
+Config - {Object} -- The configuration object that was used to generate the request
+StatusText - {string} -- HTTP status text of the response
+.then(response)  --> $http is relatively simple. The input for the 
+                     function is a singleobject that represents a 
+                     configuration object.You then use the Promise method 
+                     .then(response) to execute your functions off of 
+                     the response from the API.
+$resource --> you will consolidate your $http calls into an Angular 
+              $resource, which is a multi-purpose service designed to 
+              encapsulate API interaction and make it much easier to
+               maintain.
+
+              create convenient methods for dealing with typical 
+              RESTful APIs,Built on top of the $http service, 
+              use the $promise property on the returned value.
+              To use $resource, you can declare it as a variable.
+method – {string} – HTTP method (e.g. 'GET', 'POST', etc)
+url – {string} – Absolute or relative URL of the resource that is being requested.
+params – {Object.<string|Object>} – Map of strings or objects which will be serialized with the paramSerializer and appended as GET * parameters.
+data – {string|Object} – Data to be sent as the request message data.
+headers – {Object} – Map of strings or functions which return strings representing HTTP headers to send to the server. If the return value of a function is null, the header will not be sent. Functions accept a config object as an argument.
+eventHandlers - {Object} - Event listeners to be bound to the XMLHttpRequest object. To bind events to the XMLHttpRequest upload object, use uploadEventHandlers. The handler will be called in the context of a $apply block.
+uploadEventHandlers - {Object} - Event listeners to be bound to the XMLHttpRequest upload object. To bind events to the XMLHttpRequest object, use eventHandlers. The handler will be called in the context of a $apply block.
+xsrfHeaderName – {string} – Name of HTTP header to populate with the XSRF token.
+xsrfCookieName – {string} – Name of cookie containing the XSRF token.
+transformRequest – {function(data, headersGetter)|Array.<function(data, headersGetter)>} – transform function or an array of such functions. The transform function takes the http request body and headers and returns its transformed (typically serialized) version. See Overriding the Default Transformations
+transformResponse – {function(data, headersGetter, status)|Array.<function(data, headersGetter, status)>} – transform function or an array of such functions. The transform function takes the http response body, headers and status and returns its transformed (typically deserialized) version. See Overriding the Default Transformations
+paramSerializer - {string|function(Object<string,string>):string} - A function used to prepare the string representation of request parameters (specified as an object). If specified as string, it is interpreted as function registered with the $injector, which means you can create your own serializer by registering it as a service. The default serializer is the `$httpParamSerializer;alternatively, you can use the$httpParamSerializerJQLike`
+cache – {boolean|Object} – A boolean value or object created with $cacheFactory to enable or disable caching of the HTTP response. See $http Caching for more information.
+timeout – {number|Promise} – timeout in milliseconds, or promise that should abort the request when resolved.
+withCredentials - {boolean} - whether to set the withCredentials flag on the XHR object. See requests with credentials for more information.
+responseType - {string} - see XMLHttpRequest.responseType.
+Some shortcuts for some of the methods also exist, that inject preconfigured values into the block:
+
+$http.get
+$http.head
+$http.post
+$http.put
+$http.delete
+$http.jsonp
+$http.patch
+
+{ 'get':    {method:'GET'},
+  'save':   {method:'POST'},
+  'query':  {method:'GET', isArray:true},
+  'remove': {method:'DELETE'},
+  'delete': {method:'DELETE'} };

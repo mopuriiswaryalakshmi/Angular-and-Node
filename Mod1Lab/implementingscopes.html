@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="scopeApp">  
+
+<head>
+    <title>Angular Fundamentals</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div ng-controller="myController">
+        <h1>{{title}}</h1>
+        <a href='#' ng-click='renameTitle("Away")'>Click This to Change</a>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script>
+        var  scopeApp = angular.module('scopeApp', [])
+             .controller('myController',[
+                '$scope',
+                function($scope){
+                    $scope.title ="Home";
+
+                    $scope.renameTitle = function(newValue){
+                        $scope.title = newValue;
+                    };
+                }
+            ]);
+    </script>
+</body>
+        
+</html>

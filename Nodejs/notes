@@ -1,0 +1,49 @@
+require() can be used to import many different types of modules, not just for local node.js files. You can use require() to do the following:
+
+Import core modules/packages, e.g., const filesystem = require('fs')
+Import npm modules/packages, e.g., const express = require('express')
+Import single file in a project, e.g., const server = require('./boot/server.js')
+Import single JSON files, e.g., const databaseConfigs = require('./configs/database.json')
+Import folders in a project (an alias for importing an index.js in that folder), e.g.,const routes = require('./routes')
+Using require() with local files :-
+start the name string with a . --> to specify that the file path is relative to the current folder 
+                                   of the node.js file
+                            .. -->  to specify that the file path is relative to the parent directory
+                                 of the current folder.
+Using require() with local files -->server = require('./boot/server.js')
+                                   imports a file named server.js which
+                                    is in a folder named boot that is in 
+                                    the current folder relative to the 
+                                    code file in which we write require().
+Using require() with npm or core modules/packages :-  enter the
+            module/package name as the name string
+            const express = require('express') imports a package named express.
+The package is in the node_modules folder in the root of the project -->
+                              if it's an installed npm package.
+in the system folder --> if it's a core Node module (exact location
+                        depends on your OS and how you installed Node).
+Using require() with local files --> server = require('./boot/server.js')
+Import core modules/packages, e.g., const filesystem = require('fs')
+Import npm modules/packages, e.g., const express = require('express')
+Import single file in a project, e.g., const server = require('./boot/server.js')
+Import single JSON files, e.g., const databaseConfigs = require('./configs/database.json')
+Import folders in a project (an alias for importing an index.js in that folder), e.g.,const routes = require('./routes')
+
+
+const filesystem = require('fs') // core module
+const express = require('express') // npm module
+const server = require('./boot/server.js') // server.js file with a relative path down the tree
+const server = require('../boot/server.js') // server.js file with a relative path up the tree
+const server = require('/var/www/app/boot/server.js') // server.js file with an absolute path 
+const server = require('./boot/server') // file if there's the server.js file
+const routes = require('../routes') // index.js inside routes folder if there's no routes.js file
+const databaseConfigs = require('./configs/database.json') // JSON file
+
+Node Patterns for module.exports
+Exporting methods using exports.methodA = function(ops) {...}
+             or
+Exporting methods using module.exports = {...}
+
+Importing with require()
+
+

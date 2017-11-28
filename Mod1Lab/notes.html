@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app=labAssessment>
+<head>
+   <title></title>     
+</head>
+<body>
+    <!--purpose of $scope in an Angular application ->
+         The $scope object is used to make the model available to the view-->
+    <!-- Have an HTML file for the view (i.e. index.html)
+        Load the Angular library in a script tag
+        Declare an Angular module
+        Declare an Angular Controller
+        Use ng-controller to bind the Controller to the View
+        Use an Angular Expression to bind the date value to the View
+        Use the JavaScript Date Object to generate the date.
+        Use Dependency Injection to get the date value from the constant. -->
+    <!--Be sure to put your declarations in order (Angular, then App declaration, then constant, then controller. This will ensure you have no errors. -->
+        <!-- Q> implementing Dependency Injection within your app.   -->
+        <!-- A>app.controller("myCtrlr", ["$scope", function($scope) { } ]); -->
+        <!-- Q>you use to get started on this task -->
+        <!-- A>app.controller('mainController', [ ]);  -->
+        <!-- Q>you were tasked with binding your Controller to the View. -->
+        <!-- A>< body ng-controller="mainController" > correct -->  
+
+    
+    <!-- ng-controller is controller to view -->
+    <!-- ng-model    is view to controller
+        view to the controller with ng-model to a different place in the view so that we can display the value as it is changing -->
+    <!--When  working with $scope variables communication between the view and the controller can go both ways-->
+    <!-- view can update automatically when the $scope variable's value changes in the controller,  -->
+    <!-- changes in the view can also cause the $scope variable's value to change in the controller. -->
+    <!-- If it's ng-model, it needs a dot in it. -->
+    <!-- ng-model works on the concept of inheritance -->
+    <!--  in more complicated applications the inheritance can be lost when ng-model is used without using a subproperty of an object.The standard rule is:If it's ng-model, it needs a dot in it.-->
+    <!--  in larger applications with more than one controller it is very important to use an object to house your ng-model properties, such as order.specialInstructions.  -->
+    <!-- It is best practice to always bind to an object off of the scope, in this case, "model".
+        This provides a clean separation and avoids binding issues in a more complex application
+    eg: $scope.model = {title: 'Our Menu'};   <h2> tag with {{model.title}}.
+-->
+<!-- Putting a $scope variable's name inside an Angular expression {{ }} binds it to the view, and sets up a watcher to keep up on the value. -->
+<!-- (e.g. {{::model.title}}) to perform a one-time binding. - if you know a variable isn't going to change in the view, and you just want to bind its initial value,
+This tells Angular to go ahead and set the value the first time, but not to set a watcher to keep up on it. This can be a useful performance boost for larger applications.-->
+<!-- the $scope object can also hold functions for your view to interact with using Angular's event handlers such as ng-click, ng-mouseover, etc. -->
+<!-- To Two-Way Bind a Variable with ng-model -->
+<!-- By $scope variables, the communication between the view and the controller can go both ways. -->
+</body>
+</html>

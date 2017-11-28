@@ -1,0 +1,9 @@
+1>Which Angular object do you use to support two-way dynamic binding? ->ng-model
+2>when the user enters special instructions on the form, their input is bound to the model->
+        < textarea class="form-control" ng-model="model.specialInstructions" > < /textarea > 
+3> you were tasked with adding meal order information to your model.
+Which of the model properties are managed by a function inside of the controller? ->
+        only the name and price of the pizza
+
+
+

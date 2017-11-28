@@ -1,0 +1,35 @@
+Then there are two ways to declare your promise, $q.when() or $q.defer().
+$q.when() --> can turn any value-based function into a promise, 
+              whose return value can then be used. It is primarily useful 
+              for situations where a 3rd party promise (such as jQuery's), 
+              is being used in a library
+$q.defer() --> on the other hand - declares a standalone promise that will
+                resolve with whatever data you pass to it through 
+                $q.resolve or $q.reject.
+$http and $resource --> have their own promises baked in, 
+                        so chaining into the promises is much easier,
+                        just make the $http or $resource call the 
+                        return value of the function, and then return
+                         the response within a .then().
+.then() --> To use a promises return value, you make use
+             of the .then() method on the promise object.
+Chaining promises --> is one of the more powerful features of
+                      $q. Simply put, a return value from a 
+                      then() statement passes to the next 
+                      then() statement in the promise.
+errorhandle1() --> Rejecting promises can happen at any point in the
+                   chain cleanly, causing each error callback below 
+                   where it was called to be fired.
+.all() --> Combining promises makes use of the .all() method.
+one HTTP call --> to make multiple functions use the same promise
+                 resolution or a cached value, so that one HTTP
+                  call can satisfy many requests. This works 
+                  especially well within Services, which you will 
+                  learn about in the next course. It can be 
+                  accomplished like this:
+null value --> Set a null value outside of your promise.
+use the cached value --> these two functions would use the same
+                         promise and would resolve simultaneously 
+                         on the promise's conclusion, or if one 
+                         function was called later than the other 
+                         it would use the cached value.

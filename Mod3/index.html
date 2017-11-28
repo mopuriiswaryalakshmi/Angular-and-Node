@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="ngrepeatapp">  
+
+<head>
+    <title>Angular Fundamentals</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+
+<body ng-controller="iterationController">
+    
+    <!--<div ng-repeat="character in people | filter: filterVal"> 2nd -->
+    <!--<div ng-repeat="character in people | orderBy: 'name'"> 3rd -->
+    <!--<div ng-repeat="character in people | orderBy: '!name'"> 3rd(Reversing the order) -->
+    <!--<div ng-repeat="character in people | orderBy: '!name' | filter: filterVal track by $index"> -->
+    <div ng-repeat="character in people">
+        {{character.name}} is a {{character.gender}} {{character.type}}
+
+    </div>
+
+    <div>
+        <select ng-options="character.name for character in people" ng-model="selected"></select>
+    </div>
+
+    <select ng-model='selected'>
+        <option value='Mickey Mouse'>Mickey Mouse</option>
+        <option value='Donal Duck'>Donal Duck</option>
+        <option value='Minnie Mouse'>Minnie Mouse</option>
+        <option value='Daisy Duck'>Daisy Duck</option>
+        <option value='Goofy'>Goofy</option>
+    </select>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="./ngrepeatapp/ngrepeatapp.js"></script>
+    <script src="./ngrepeatapp/iterationController.js"></script>
+</body>
+        
+</html>
+
+

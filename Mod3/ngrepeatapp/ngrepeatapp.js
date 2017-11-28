@@ -1,0 +1,1 @@
+var ngRepeatapp = angular.module("ngrepeatapp", []);

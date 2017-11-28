@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="helloWorldApp">   
+    <!--Single Page App, you would apply the ng-app attribute on the <html> tag to bootstrap your application for the entire page -->     
+    <!--If you are working with multiple angular apps in the same page, or if you want to isolate the Angular application to only a portion of the page, you can use ng-app on a lower level element, such as a <div> tag. -->
+    <!--  custom attributes that start with 'data-'  -->
+
+<head>
+    <title>Angular Fundamentals</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+</head>
+
+<body ng-controller="firstController">
+    <!-- To Bind the Controller to Your HTML -->
+    <!-- Applying the ng-controller attribute to an HTML tag tells Angular that the controller will work on that particular section of the view,we have defined it on the <body> tag so the entire HTML body will be controlled by this controlle -->
+    <div class="container">
+        <h1>AngularFundamentals</h1>
+        <h2>{{'Hello from AngularJS'}}</h2>
+        <!--{{}} in this HTML are used to indicate an Angular expression, this to reference values that are defined in the Scope function of the module-->
+        <pre>{{appName}}</pre>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script>
+        var helloWorldApp = angular.module('helloWorldApp', [])
+            //"module" and "app" in Angular are interchangeable
+            //[] is where you would define any other Angular modules that your app may depend on (for example, ng-animate, ng-touch).
+            .constant('myConfig', {applicationName:'My Angular JS App'});
+            //A constant is used to hold static values. It is most useful in an application with multiple controllers, if you want to only define a property in one place. It can then be injected into any controller.
+            //A constant can either be a single value such as a string, or an object. It can't be a function, and shouldn't have any logic of its own, since it's a very isolated component. 
+            helloWorldApp.controller('firstController',[
+                '$scope','myConfig',
+                function($scope,myConfig){
+                    $scope.appName = myConfig.applicationName;
+                }
+            ]);
+            //helloWorldApp at controller tells Angular to define your controller as part of the helloWorldApp module.
+            // The array brackets are used to hold the contents of the controller, which you will start defining in the next step.and  used for injecting additional dependencies into the controller
+            //'$scope' variable refers to the layer that binds the data from the controller into your view
+            //dependency myConfig has been included twice; once as a string literal and a second time as an object parameter
+            //The string literal is included for minification purposes, and tells the minifier that the 'myConfig' object is being injected, but it can rename the myConfig variable to a shorter name.
+            //You create properties of the $scope variable to bind to your view. You can include other variables and program logic within your controller that you define normally, but they will not be accessible by the view if they are not defined within $scope.
+    </script>
+</body>
+        <!-- steps were required to display My Angular JS App in the appName property? -->
+        <!--1. Declare an app constant -->
+        <!--2. Name the constant  -->
+        <!--3. Create the applicationName property on the constant -->
+        <!--4. Add the constant to the controller  -->
+        <!--5. Assign the constant's property to $scope.appName  -->
+        
+</html>
